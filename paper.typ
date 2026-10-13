@@ -3,7 +3,7 @@
 
 #show: main_page.with(front-matter: {
   align(center)[
-    #text(font: "Noto Sans CJK SC", size: zh(2), weight: "bold")[
+    #text(font: ("Noto Sans CJK SC", "Noto Sans SC"), size: zh(2), weight: "bold")[
       基于字符级 BiLSTM 的半结构化文本序列标注与实体抽取方法
     ]
   ]

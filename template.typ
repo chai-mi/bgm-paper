@@ -8,7 +8,7 @@
 )
 
 #let abstract = abstract => {
-  align(center)[#text(font: "Noto Sans CJK SC", size: zh(2))[*摘要*]]
+  align(center)[#text(font: ("Noto Sans CJK SC", "Noto Sans SC"), size: zh(2))[*摘要*]]
   par(first-line-indent: 0em)[
     #text(size: zh(4.5))[
       #abstract
@@ -17,7 +17,7 @@
 
 #let keywords = (..keywords) => {
   par(first-line-indent: 0em)[
-    #text(font: "Noto Sans CJK SC")[*关键词：*]
+    #text(font: ("Noto Sans CJK SC", "Noto Sans SC"))[*关键词：*]
     #text(size: zh(4.5))[
       #keywords.pos().join("，")
     ]]
@@ -40,13 +40,16 @@
     lang: "zh",
     font: (
       (name: "Noto Serif CJK SC", covers: "latin-in-cjk"),
+      (name: "Noto Serif SC", covers: "latin-in-cjk"),
       "Noto Serif CJK SC",
+      "Noto Serif SC",
     ),
     zh(4.5),
   )
   show math.equation: set text(font: (
     "New Computer Modern Math",
     "Noto Serif CJK SC",
+    "Noto Serif SC",
   ))
   show raw: set text(font: "Noto Sans Mono")
 
@@ -68,18 +71,18 @@
     counter(figure.where(kind: raw)).update(0)
 
     set align(center)
-    set text(weight: "regular", font: "Noto Sans CJK SC", size: zh(2.5))
+    set text(weight: "regular", font: ("Noto Sans CJK SC", "Noto Sans SC"), size: zh(2.5))
     set block(spacing: 1.14em, below: 1.14em)
     // pagebreak(weak: true)
     block(it)
   }
   show heading.where(level: 2): it => {
-    set text(weight: "regular", font: "Noto Sans CJK SC", size: zh(4))
+    set text(weight: "regular", font: ("Noto Sans CJK SC", "Noto Sans SC"), size: zh(4))
     set block(above: 1.14em, below: 1.14em)
     block(it)
   }
   show heading.where(level: 3): it => {
-    set text(weight: "regular", font: "Noto Sans CJK SC", size: zh(4.5))
+    set text(weight: "regular", font: ("Noto Sans CJK SC", "Noto Sans SC"), size: zh(4.5))
     set block(above: 1.14em, below: 1.14em)
     block(it)
   }
