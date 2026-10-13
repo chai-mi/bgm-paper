@@ -8,7 +8,7 @@
 )
 
 #let abstract = abstract => {
-  align(center)[#text(font: "Noto Sans CJK SC")[*摘要*]]
+  align(center)[#text(font: "Noto Sans CJK SC", size: zh(2))[*摘要*]]
   par(first-line-indent: 0em)[
     #text(size: zh(4.5))[
       #abstract

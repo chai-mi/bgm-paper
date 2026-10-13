@@ -3,15 +3,14 @@
 
 #show: main_page.with(front-matter: {
   align(center)[
-    #text(font: "Noto Sans CJK SC", size: 15pt, weight: "bold")[
-      基于字符级 BiLSTM 的半结构化文本序列标注与实体抽取方法\
-      ——以动画发布文件名解析为例
+    #text(font: "Noto Sans CJK SC", size: zh(2), weight: "bold")[
+      基于字符级 BiLSTM 的半结构化文本序列标注与实体抽取方法
     ]
   ]
   v(0.8em)
 
   abstract[
-    动画资源在互联网上以「发布文件名」的形式流通，这类文本由多语言标题、全角与半角符号以及各发布组自定的分隔约定混合而成，是典型的半结构化文本。人工从中整理标题、集数、清晰度与字幕语言等字段成本高昂且难以规模化，而基于正则表达式或固定规则的解析器难以覆盖不断增长的长尾格式。本文以开源项目 bgm-parser 为研究对象，设计并实现了一套面向动画发布文件名的实体抽取方法。该方法把解析任务建模为字符级序列标注问题：首先定义 12 类领域实体及其 BIO 标注规范，然后使用字符级双向长短期记忆网络（BiLSTM）预测逐字符标签，最后通过带 BIO 合法性约束的动态规划解码把标签序列还原为 XML 实体片段。项目同时构建了包含一万余条标注样本的数据集，并交付了可复用的推理包。在留出的一千五百条测试样本上，模型取得 0.9987 的实体级 micro-F1 和 0.984 的完全匹配率，参数量仅约 3.09M，可在普通中央处理器上完成推理。结果表明，对于标签体系封闭、字符构成相对稳定的窄领域半结构化文本，轻量字符级序列标注模型能够在极低计算开销下达到接近饱和的抽取精度，为同类「单行、多语言、无固定语法」文本的结构化提供了可复现的设计范式。
+    #h(2em)动画资源在互联网上以「发布文件名」的形式流通，这类文本由多语言标题、全角与半角符号以及各发布组自定的分隔约定混合而成，是典型的半结构化文本。人工从中整理标题、集数、清晰度与字幕语言等字段成本高昂且难以规模化，而基于正则表达式或固定规则的解析器难以覆盖不断增长的长尾格式。本文以开源项目 bgm-parser 为研究对象，设计并实现了一套面向动画发布文件名的实体抽取方法。该方法把解析任务建模为字符级序列标注问题：首先定义 12 类领域实体及其 BIO 标注规范，然后使用字符级双向长短期记忆网络（BiLSTM）预测逐字符标签，最后通过带 BIO 合法性约束的动态规划解码把标签序列还原为 XML 实体片段。项目同时构建了包含一万余条标注样本的数据集，并交付了可复用的推理包。在留出的一千五百条测试样本上，模型取得 0.9987 的实体级 micro-F1 和 0.984 的完全匹配率，参数量仅约 3.09M，可在普通中央处理器上完成推理。结果表明，对于标签体系封闭、字符构成相对稳定的窄领域半结构化文本，轻量字符级序列标注模型能够在极低计算开销下达到接近饱和的抽取精度，为同类「单行、多语言、无固定语法」文本的结构化提供了可复现的设计范式。
   ]
 
   keywords[序列标注][命名实体识别][双向长短期记忆网络][半结构化文本][信息抽取]
@@ -96,13 +95,21 @@ $
     spacing: 0.4em,
     box(stroke: 0.6pt, inset: (x: 0.9em, y: 0.35em), radius: 2pt)[#text(size: zh(4.5))[Nyaa 等站点的用户发布列表]],
     text(size: zh(4.5))[$arrow.b$],
-    box(stroke: 0.6pt, inset: (x: 0.9em, y: 0.35em), radius: 2pt)[#text(size: zh(4.5))[异步爬虫：HTTP/2、限流重试、按 id 去重、Parquet 落盘]],
+    box(stroke: 0.6pt, inset: (x: 0.9em, y: 0.35em), radius: 2pt)[#text(
+      size: zh(4.5),
+    )[异步爬虫：HTTP/2、限流重试、按 id 去重、Parquet 落盘]],
     text(size: zh(4.5))[$arrow.b$],
-    box(stroke: 0.6pt, inset: (x: 0.9em, y: 0.35em), radius: 2pt)[#text(size: zh(4.5))[人工标注：XML $arrow.l.r$ BIO 双向转换]],
+    box(stroke: 0.6pt, inset: (x: 0.9em, y: 0.35em), radius: 2pt)[#text(
+      size: zh(4.5),
+    )[人工标注：XML $arrow.l.r$ BIO 双向转换]],
     text(size: zh(4.5))[$arrow.b$],
-    box(stroke: 0.6pt, inset: (x: 0.9em, y: 0.35em), radius: 2pt)[#text(size: zh(4.5))[字符级 BiLSTM 训练：Embedding＋两层双向 LSTM]],
+    box(stroke: 0.6pt, inset: (x: 0.9em, y: 0.35em), radius: 2pt)[#text(
+      size: zh(4.5),
+    )[字符级 BiLSTM 训练：Embedding＋两层双向 LSTM]],
     text(size: zh(4.5))[$arrow.b$],
-    box(stroke: 0.6pt, inset: (x: 0.9em, y: 0.35em), radius: 2pt)[#text(size: zh(4.5))[约束解码：合法 BIO 序列 $arrow.r$ XML 实体片段]],
+    box(stroke: 0.6pt, inset: (x: 0.9em, y: 0.35em), radius: 2pt)[#text(
+      size: zh(4.5),
+    )[约束解码：合法 BIO 序列 $arrow.r$ XML 实体片段]],
   )),
   caption: [bgm-parser 的数据与模型流水线],
 )<fig:pipeline>
@@ -183,10 +190,10 @@ $
 
 模型是一个轻量的字符级 BiLSTM，其结构可以概括为「嵌入层－双向循环编码层－线性分类层」。给定一批补齐到相同长度的字符编号序列，嵌入层把每个字符映射为 128 维向量；随后是一个丢弃率为 0.25 的 Dropout 层；编码层由两层双向 LSTM 组成，每层每个方向的隐藏维度为 256，因此每个位置得到 512 维的表示；最后，线性分类层把 512 维表示映射到 25 个标签上的得分。单个 LSTM 单元的更新可以写为
 $
-  bold(i)_t &= sigma(W_i [bold(h)_(t-1), bold(x)_t] + bold(b)_i), \
-  bold(f)_t &= sigma(W_f [bold(h)_(t-1), bold(x)_t] + bold(b)_f), \
-  bold(c)_t &= bold(f)_t dot.op bold(c)_(t-1) + bold(i)_t dot.op tanh(W_c [bold(h)_(t-1), bold(x)_t] + bold(b)_c), \
-  bold(h)_t &= bold(o)_t dot.op tanh(bold(c)_t),
+  bold(i)_t & = sigma(W_i [bold(h)_(t-1), bold(x)_t] + bold(b)_i), \
+  bold(f)_t & = sigma(W_f [bold(h)_(t-1), bold(x)_t] + bold(b)_f), \
+  bold(c)_t & = bold(f)_t dot.op bold(c)_(t-1) + bold(i)_t dot.op tanh(W_c [bold(h)_(t-1), bold(x)_t] + bold(b)_c), \
+  bold(h)_t & = bold(o)_t dot.op tanh(bold(c)_t),
 $
 其中 $bold(i)_t$、$bold(f)_t$、$bold(o)_t$ 分别为输入门、遗忘门与输出门，$bold(c)_t$ 为记忆单元。双向编码把前向与后向的隐藏状态拼接为
 $
@@ -298,5 +305,6 @@ $
 
 本文以动画发布文件名解析为切入点，研究并实现了一套面向半结构化文本的轻量实体抽取方法。工作以字符级序列标注为核心，定义了 12 类领域实体的 BIO 标注规范，设计了 XML 与 BIO 之间的双向无损转换，并构建了覆盖一万余条真实样本的标注数据集。模型采用字符级 BiLSTM 编码结合硬约束动态规划解码，在参数量仅约 3.09M 的情况下取得 0.9987 的实体级 micro-F1 与 0.984 的完全匹配率，验证了「显式领域约束＋轻量神经模型」在窄领域结构化任务上的有效性。该方案无需预训练、无需分词、可离线部署，并已通过开源推理包与模型权重实现了完整复现。对于标签体系稳定、文本形态独特、对推理成本敏感的应用场景，这一设计范式具有直接的参考价值。
 
+#pagebreak()
 #heading(level: 1, numbering: none)[参考文献]
 #bibliography("refs.bib", style: "gb-7714-2015-numeric", title: none)
