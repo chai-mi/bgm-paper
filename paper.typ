@@ -1,10 +1,10 @@
 #import "template.typ": abstract, keywords, main_page
-#import "@preview/pointless-size:0.1.2": zh
+#import "@preview/pointless-size:0.1.3": zh
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
 
 #show: main_page.with(front-matter: {
   align(center)[
-    #text(font: ("Noto Sans CJK SC", "Noto Sans SC"), size: zh(2), weight: "bold")[
+    #text(font: "Noto Sans CJK SC", size: zh(2), weight: "bold")[
       基于字符级 BiLSTM 的半结构化文本序列标注与实体抽取方法
     ]
   ]

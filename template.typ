@@ -8,7 +8,7 @@
 )
 
 #let abstract = abstract => {
-  align(center)[#text(font: ("Noto Serif CJK SC", "Noto Serif SC"), size: zh(2))[*摘要*]]
+  align(center)[#text(font: "Noto Serif CJK SC", size: zh(2))[*摘要*]]
   par(first-line-indent: 2em)[
     #text(size: zh(4.5))[
       #abstract
@@ -17,7 +17,7 @@
 
 #let keywords = (..keywords) => {
   par(first-line-indent: 0em)[
-    #text(font: ("Noto Sans CJK SC", "Noto Sans SC"))[*关键词：*]
+    #text(font: "Noto Sans CJK SC")[*关键词：*]
     #text(size: zh(4.5))[
       #keywords.pos().join("，")
     ]]
@@ -40,21 +40,22 @@
     lang: "zh",
     font: (
       (name: "Noto Serif CJK SC", covers: "latin-in-cjk"),
-      (name: "Noto Serif SC", covers: "latin-in-cjk"),
       "Noto Serif CJK SC",
-      "Noto Serif SC",
     ),
     zh(4.5),
   )
   show math.equation: set text(font: (
     "New Computer Modern Math",
     "Noto Serif CJK SC",
-    "Noto Serif SC",
   ))
   show raw: set text(font: "Noto Sans Mono")
 
   // 前言
   front-matter
+
+  // 正文页脚显示居中页码
+  set page(numbering: "1", number-align: center + bottom)
+  counter(page).update(1)
 
   set par(justify: true, leading: 0.95em, spacing: 0.95em, first-line-indent: (amount: 2em, all: true))
 
