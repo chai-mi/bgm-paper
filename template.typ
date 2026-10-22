@@ -97,6 +97,7 @@
   show figure.where(kind: table): set figure.caption(position: top)
   set table(
     stroke: table_stroke(1pt),
+    inset: (x: 5pt, y: 8pt),
     align: horizon,
   )
   show figure.caption: set text(weight: "bold")
